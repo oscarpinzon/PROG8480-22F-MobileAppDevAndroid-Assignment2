@@ -9,4 +9,8 @@
     <string name="enter_email_id_hint">Enter Email-id</string>
     <string name="login_button_text">Login</string>
     <string name="home">Home</string>
+    <string name="signup_button_text">Signup</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="sign_up_button_text">Sign Up</string>
+    <string name="back_to_login_button_text">Back to Login</string>
 </resources>

@@ -15,7 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:gravity="center_horizontal"
-        android:text="@string/login_title"
+        android:text="@string/sign_up_title"
         android:textColor="@color/white"
         android:textSize="@dimen/title_text_size"
         android:textStyle="bold"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtUid"
+        android:id="@+id/edtUsernameSignUp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/edtPasswordSignUp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtEmailId"
+        android:id="@+id/edtEmailIdSignUp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -106,25 +106,22 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUpNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/login_button_text"
+        android:text="@string/sign_up_button_text"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnBackToLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/signup_button_text"
+        android:text="@string/back_to_login_button_text"
         android:textColor="@color/white"
         android:textSize="@dimen/button_text_size"
         android:textStyle="bold" />
 </LinearLayout>
-
-
-

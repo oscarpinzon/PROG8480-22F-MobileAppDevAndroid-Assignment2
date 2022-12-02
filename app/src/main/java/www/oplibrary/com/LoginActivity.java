@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class LoginActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword, edtEmail;
-    Button btnLogin;
+    Button btnLogin, btnSignUp;
     DBHelper dbHelper;
     Boolean lookupStatus;
     Intent intent;
@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         edtEmail = findViewById(R.id.edtEmailId);
         btnLogin = findViewById(R.id.btnLogin);
+        btnSignUp = findViewById(R.id.btnSignUp);
         dbHelper = new DBHelper(this);
         lookupStatus = false;
         sharedPref1 = getSharedPreferences("login_details", MODE_PRIVATE);
@@ -38,6 +39,10 @@ public class LoginActivity extends AppCompatActivity {
             String username = edtUsername.getText().toString();
             String password = edtPassword.getText().toString();
             String email = edtEmail.getText().toString();
+            if(username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+                Snackbar.make(v, "Please fill all the fields", Snackbar.LENGTH_LONG).show();
+                return;
+            }
             lookupStatus = dbHelper.checkUser(username, password, email);
             if (lookupStatus) {
                 // login successful
@@ -48,8 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                 editor1.apply();
                 startActivity(intent);
             } else {
-                Snackbar.make(v, "Invalid username or password", Snackbar.LENGTH_LONG).show();
+                InvalidDialog dialog1 = new InvalidDialog();
+                dialog1.show(getSupportFragmentManager(), "InvalidDialog");
             }
+        });
+
+        btnSignUp.setOnClickListener(v -> {
+            intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
     }
 }

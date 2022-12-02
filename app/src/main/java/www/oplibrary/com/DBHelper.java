@@ -57,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DBNAME, null, VERSION);
     }
 
+    // creates all tables and inserts default values
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(USER_CREATE_TABLE);
@@ -77,16 +78,18 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(USER_TABLE_NAME, null, values);
     }
 
-    public boolean InsertUser(User user) {
+    // inserts a new user into the database
+    public boolean insertUser(String username, String emailId, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USER_COL2, user.getUsername());
-        contentValues.put(USER_COL3, user.getEmailId());
-        contentValues.put(USER_COL4, user.getPassword());
+        contentValues.put(USER_COL2, username);
+        contentValues.put(USER_COL3, emailId);
+        contentValues.put(USER_COL4, password);
         long result = db.insert(USER_TABLE_NAME, null, contentValues);
         return result != -1;
     }
 
+    // method that runs on upgrade
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(USER_DROP_TABLE);
@@ -97,6 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    // checks if the user exists in the database
     public Boolean checkUser(String username, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COL2 + " = ? AND " + USER_COL4 + " = ? AND " + USER_COL3 + " = ?", new String[]{username, password, email});
@@ -108,6 +112,18 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
             return false;
         }
+    }
 
+    public Boolean checkUsernameTaken(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COL2 + " = ?", new String[]{username});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+
+        } else {
+            cursor.close();
+            return false;
+        }
     }
 }
