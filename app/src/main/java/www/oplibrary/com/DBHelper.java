@@ -151,4 +151,70 @@ public class DBHelper extends SQLiteOpenHelper {
         long result = db.insert(STOCK_TABLE_NAME, null, contentValues);
         return result != -1;
     }
+
+    public boolean CheckBookExists(String bookID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME + " WHERE " + STOCK_COL1 + " = ?", new String[]{bookID});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+    public boolean CheckBookAvailability(String bookID, int parseInt) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME + " WHERE " + STOCK_COL1 + " = ? AND " + STOCK_COL5 + " >= ?", new String[]{bookID, String.valueOf(parseInt)});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+    public boolean CheckCustomerExists(String customerEmail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COL3 + " = ?", new String[]{customerEmail});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+    public boolean IssueBook(String bookID, String customerName, String customerEmail, int parseInt, String issueDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ISSUE_COL2, bookID);
+        contentValues.put(ISSUE_COL3, customerName);
+        contentValues.put(ISSUE_COL4, customerEmail);
+        contentValues.put(ISSUE_COL5, parseInt);
+        contentValues.put(ISSUE_COL6, issueDate);
+        long result = db.insert(ISSUE_TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
+
+    public boolean ReduceBookStock(String bookID, int parseInt) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME + " WHERE " + STOCK_COL1 + " = ?", new String[]{bookID});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int currentStock = cursor.getInt(4);
+            int newStock = currentStock - parseInt;
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(STOCK_COL5, newStock);
+            db.update(STOCK_TABLE_NAME, contentValues, STOCK_COL1 + " = ?", new String[]{bookID});
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
 }

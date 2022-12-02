@@ -61,8 +61,7 @@ public class HomeActivity extends AppCompatActivity {
             if (itemId == R.id.nav_add_book) {//frag
                 frag = new AddBookFragment();
             } else if (itemId == R.id.nav_issue_book) {
-                //frag = new IssueBookFragment();
-                return false;
+                frag = new IssueBookFragment();
             } else if (itemId == R.id.nav_return_book) {
                 //frag = new ReturnBookFragment();
                 return false;

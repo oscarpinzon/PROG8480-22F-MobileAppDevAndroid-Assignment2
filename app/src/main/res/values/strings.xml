@@ -35,4 +35,13 @@
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="issue_book">Issue Book</string>
+    <string name="book_id">Book Id</string>
+    <string name="enter_book_id">Enter Book Id</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="enter_customer_name">Enter Customer Name</string>
+    <string name="customer_email">Customer Email</string>
+    <string name="quantity_issued">Quantity Issued</string>
+    <string name="enter_quantity_issued">Enter Quantity Issued</string>
+    <string name="date_of_issue">Date of Issue</string>
 </resources>
