@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     ActionBarDrawerToggle mToggle;
     NavigationView navView;
     SharedPreferences sharedPref1;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,14 @@ public class HomeActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_list_books) {
                 frag = new ListBooksFragment();
             } else if (itemId == R.id.nav_logout) {
-                //frag = new LogoutFragment();
-                return false;
+                //logout
+                SharedPreferences.Editor editor = sharedPref1.edit();
+                editor.clear();
+                editor.apply();
+                finish();
+                //redirect to login
+                intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
             if (frag != null) {
                 FragmentTransaction frgTrans = getSupportFragmentManager().beginTransaction();
