@@ -13,4 +13,26 @@
     <string name="sign_up_title">Sign Up</string>
     <string name="sign_up_button_text">Sign Up</string>
     <string name="back_to_login_button_text">Back to Login</string>
+    <string name="add_book_nav">Add Book</string>
+    <string name="issue_book_nav">Issue Book</string>
+    <string name="return_book_nav">Return Book</string>
+    <string name="search_book_nav">Search Book</string>
+    <string name="list_books_nav">List Books</string>
+    <string name="logout_nav">Logout</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="add_book_title">Add Book</string>
+    <string name="isbn_label">ISBN</string>
+    <string name="welcome_message">Welcome %s!</string>
+    <string name="enter_isbn_hint">Enter ISBN</string>
+    <string name="book_title">Book Title</string>
+    <string name="enter_book_title">Enter Book Title</string>
+    <string name="publisher">Publisher</string>
+    <string name="qty_stock">Qty Stock</string>
+    <string name="enter_quantity_in_stock">Enter Quantity in Stock</string>
+    <string name="price">Price</string>
+    <string name="enter_price">Enter Price</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>

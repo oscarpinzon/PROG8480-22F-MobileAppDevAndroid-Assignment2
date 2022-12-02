@@ -126,4 +126,29 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public String[] getPublisherList() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PUBLISHER_TABLE_NAME, null);
+        String[] publishers = new String[cursor.getCount()];
+        int i = 0;
+        while (cursor.moveToNext()) {
+            publishers[i] = cursor.getString(1);
+            i++;
+        }
+        cursor.close();
+        return publishers;
+    }
+
+    public Boolean InsertBook(Book objBook) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STOCK_COL2, objBook.getIsbn());
+        contentValues.put(STOCK_COL3, objBook.getTitle());
+        contentValues.put(STOCK_COL4, objBook.getPublisher());
+        contentValues.put(STOCK_COL5, objBook.getQtyInStock());
+        contentValues.put(STOCK_COL6, objBook.getPrice());
+        long result = db.insert(STOCK_TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
 }
