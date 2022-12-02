@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBookFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:text="@string/return_book"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/issue_id"
+            android:textColor="@color/white"
+            android:textSize="@dimen/label_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtIssueId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:autofillHints=""
+            android:background="@drawable/border"
+            android:ems="10"
+            android:hint="@string/enter_issue_id"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/book_id"
+            android:textColor="@color/white"
+            android:textSize="@dimen/label_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtBookId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:autofillHints=""
+            android:background="@drawable/border"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/quantity_returned"
+            android:textColor="@color/white"
+            android:textSize="@dimen/label_text_size"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtQtyReturned"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:autofillHints=""
+            android:background="@drawable/border"
+            android:ems="10"
+            android:hint="@string/enter_quantity_returned"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/date_of_return"
+            android:textColor="@color/white"
+            android:textSize="@dimen/label_text_size"
+            android:textStyle="bold" />
+
+        <DatePicker
+            android:id="@+id/datePickerDateOfReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

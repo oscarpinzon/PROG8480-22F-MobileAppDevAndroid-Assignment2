@@ -86,7 +86,7 @@ public class IssueBookFragment extends Fragment {
                             Toast.makeText(getActivity(), "Customer does not exist", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Book not available", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Book not available. Insufficient Stock", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getActivity(), "Book does not exist", Toast.LENGTH_SHORT).show();

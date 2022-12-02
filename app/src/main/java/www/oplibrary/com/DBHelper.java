@@ -217,4 +217,73 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public String getBookId(String issueId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ISSUE_TABLE_NAME + " WHERE " + ISSUE_COL1 + " = ?", new String[]{issueId});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String bookId = cursor.getString(1);
+            cursor.close();
+            return bookId;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    public int getQtyIssued(String issueId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ISSUE_TABLE_NAME + " WHERE " + ISSUE_COL1 + " = ?", new String[]{issueId});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int qtyIssued = cursor.getInt(4);
+            cursor.close();
+            return qtyIssued;
+        } else {
+            cursor.close();
+            return 0;
+        }
+    }
+
+    public int getQtyAvailable(String bookId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME + " WHERE " + STOCK_COL1 + " = ?", new String[]{bookId});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int qtyAvailable = cursor.getInt(4);
+            cursor.close();
+            return qtyAvailable;
+        } else {
+            cursor.close();
+            return 0;
+        }
+    }
+
+    public boolean updateQtyAvailable(String bookId, int qtyUpdated) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STOCK_COL5, qtyUpdated);
+        db.update(STOCK_TABLE_NAME, contentValues, STOCK_COL1 + " = ?", new String[]{bookId});
+        return true;
+    }
+
+    public boolean returnBook(String issueId, String bookId, int qtyReturnedInt, String returnDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RETURN_COL2, issueId);
+        contentValues.put(RETURN_COL3, bookId);
+        contentValues.put(RETURN_COL4, qtyReturnedInt);
+        contentValues.put(RETURN_COL5, returnDate);
+        long result = db.insert(RETURN_TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
+
+    public boolean updateQtyIssued(String issueId, int qtyIssuedUpdated) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ISSUE_COL5, qtyIssuedUpdated);
+        db.update(ISSUE_TABLE_NAME, contentValues, ISSUE_COL1 + " = ?", new String[]{issueId});
+        return true;
+    }
 }

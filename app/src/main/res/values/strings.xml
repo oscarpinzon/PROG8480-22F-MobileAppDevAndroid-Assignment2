@@ -44,4 +44,10 @@
     <string name="quantity_issued">Quantity Issued</string>
     <string name="enter_quantity_issued">Enter Quantity Issued</string>
     <string name="date_of_issue">Date of Issue</string>
+    <string name="return_book">Return Book</string>
+    <string name="issue_id">Issue Id</string>
+    <string name="enter_issue_id">Enter Issue Id</string>
+    <string name="quantity_returned">Quantity Returned</string>
+    <string name="enter_quantity_returned">Enter Quantity Returned</string>
+    <string name="date_of_return">Date of Return</string>
 </resources>
