@@ -52,4 +52,6 @@
     <string name="date_of_return">Date of Return</string>
     <string name="search_book">Search Book</string>
     <string name="search">Search</string>
+    <string name="list_of_books">List of Books</string>
+    <string name="placeholder">Placeholder</string>
 </resources>

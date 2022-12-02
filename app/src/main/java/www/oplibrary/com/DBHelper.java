@@ -310,4 +310,9 @@ public class DBHelper extends SQLiteOpenHelper {
             return null;
         }
     }
+
+    public Cursor ListBook() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME, null);
+    }
 }

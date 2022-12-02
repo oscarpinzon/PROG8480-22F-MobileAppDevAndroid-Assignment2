@@ -67,8 +67,7 @@ public class HomeActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_search_book) {
                 frag = new SearchBookFragment();
             } else if (itemId == R.id.nav_list_books) {
-                //frag = new ListBooksFragment();
-                return false;
+                frag = new ListBooksFragment();
             } else if (itemId == R.id.nav_logout) {
                 //frag = new LogoutFragment();
                 return false;
