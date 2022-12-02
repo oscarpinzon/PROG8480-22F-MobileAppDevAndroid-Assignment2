@@ -286,4 +286,28 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update(ISSUE_TABLE_NAME, contentValues, ISSUE_COL1 + " = ?", new String[]{issueId});
         return true;
     }
+
+    public Book getBook(String bookId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + STOCK_TABLE_NAME + " WHERE " + STOCK_COL1 + " = ?", new String[]{bookId});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String bookIsbn = cursor.getString(1);
+            String bookTitle = cursor.getString(2);
+            String bookPublisher = cursor.getString(3);
+            int bookQty = cursor.getInt(4);
+            double bookPrice = cursor.getDouble(5);
+            Book book = new Book();
+            book.setIsbn(bookIsbn);
+            book.setTitle(bookTitle);
+            book.setPublisher(bookPublisher);
+            book.setQtyInStock(bookQty);
+            book.setPrice(bookPrice);
+            cursor.close();
+            return book;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
 }

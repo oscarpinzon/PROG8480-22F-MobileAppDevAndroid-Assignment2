@@ -35,6 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         lookupStatus = false;
         sharedPref1 = getSharedPreferences("login_details", MODE_PRIVATE);
 
+        // check if user is logged in
+        if (sharedPref1.getBoolean("is_logged_in", false)) {
+            intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         btnLogin.setOnClickListener(v -> {
             String username = edtUsername.getText().toString();
             String password = edtPassword.getText().toString();
@@ -50,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor1 = sharedPref1.edit();
                 editor1.putString("USER_ID", edtUsername.getText().toString().trim());
                 editor1.putString("EMAIL_ID", edtEmail.getText().toString().trim());
+                editor1.putBoolean("is_logged_in", true);
                 editor1.apply();
                 startActivity(intent);
             } else {

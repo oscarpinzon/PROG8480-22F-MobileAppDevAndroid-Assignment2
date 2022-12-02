@@ -50,4 +50,6 @@
     <string name="quantity_returned">Quantity Returned</string>
     <string name="enter_quantity_returned">Enter Quantity Returned</string>
     <string name="date_of_return">Date of Return</string>
+    <string name="search_book">Search Book</string>
+    <string name="search">Search</string>
 </resources>
